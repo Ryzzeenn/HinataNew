@@ -10,13 +10,14 @@ export function before(m, { conn }) {
         throw `
 Level ${user.level} 📊
 *${user.exp - min} / ${xp}*
-Kurang *${max - user.exp}* lagi! ✨
+Kurang *${max - user.exp}* lagi!
+_Semangat ya :v_
 `.trim()
     }
     let before = user.level * 1
     while (canLevelUp(user.level, user.exp, global.multiplier)) user.level++
     if (before !== user.level) {
-        let teks = `Selamat ${conn.getName(m.sender)} naik 🧬level\n.             ${user.role}`
+        let teks = `.             ${user.role}`
         let str = `${conn.getName(m.sender)} naik 🧬level\n.             ${user.role}
 
 *🎉 C O N G R A T S 🎉*
@@ -31,9 +32,9 @@ Kurang *${max - user.exp}* lagi! ✨
             
             try {
             let img = await levelup(teks, user.level)
-            conn.sendButton(m.chat, str, botdate, img, [['INVENTORY', '.inv']], m)
+            conn.sendButton(m.chat, str, wm2, img, [['INVENTORY', '.inv']], m)
             } catch (e) {
-            conn.sendButton(m.chat, str, botdate, hwaifu.getRandom(), [['INVENTORY', '.inv']], m)
+            conn.sendButton(m.chat, str, wm2, img, [['INVENTORY', '.inv']], m)
             }
 
     }
